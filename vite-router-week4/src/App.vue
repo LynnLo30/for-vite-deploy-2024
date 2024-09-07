@@ -8,11 +8,20 @@
   const goPage = () => {
     router.push(`/nest/${text.value}`)
   }
+
+  // Pinia
+  import { useCounterStore } from './store/countStore';
+  const countStore = useCounterStore()
 </script>
 
 <template>
   <header>
     <input type="text" v-model="text"><button type="button" @click="goPage">去哪個頁面</button>
+
+    <p>{{ countStore.count }} / {{ doubleCount }}</p>
+    <button @click="countStore.increment">++</button>
+
+
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink> |
